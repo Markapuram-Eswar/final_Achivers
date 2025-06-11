@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "782797024258",
+    "project_id": "achievers-vap",
+    "storage_bucket": "achievers-vap.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:782797024258:android:fc13839405a28130b4cb1b",
+        "android_client_info": {
+          "package_name": "com.achievers.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "782797024258-g6p1vo5aanto3450h3rfih6sos2k2rro.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-orrxPFEHb6FRg7yUHyCcLZiJkXjgchU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "782797024258-g6p1vo5aanto3450h3rfih6sos2k2rro.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "782797024258-bdp2puafbcsiklke35toec0fv4cvq55t.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.memematesFigmaPluginTest"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

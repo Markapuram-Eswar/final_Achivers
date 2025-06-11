@@ -1,0 +1,114 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const KeywordMatchApp());
+}
+
+class KeywordMatchApp extends StatelessWidget {
+  const KeywordMatchApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Keyword Match App',
+      home: const KeywordMatchPage(),
+    );
+  }
+}
+
+class KeywordMatchPage extends StatefulWidget {
+  const KeywordMatchPage({super.key});
+
+  @override
+  State<KeywordMatchPage> createState() => _KeywordMatchPageState();
+}
+
+class _KeywordMatchPageState extends State<KeywordMatchPage> {
+  final TextEditingController _inputController = TextEditingController();
+
+  List<String> keywords = [
+    'photosynthesis',
+    'sunlight',
+    'carbon dioxide',
+    'plants',
+    'leaves',
+    'oxygen'
+  ];
+
+  List<String> matchedKeywords = [];
+  List<String> missedKeywords = [];
+  double matchPercentage = 0.0;
+
+  void matchKeywords(String input, List<String> keywords) {
+    final lowerInput = input.toLowerCase();
+    final matched = <String>[];
+    final missed = <String>[];
+
+    for (final keyword in keywords) {
+      if (lowerInput.contains(keyword.toLowerCase())) {
+        matched.add(keyword);
+      } else {
+        missed.add(keyword);
+      }
+    }
+
+    final percentage = keywords.isNotEmpty
+        ? (matched.length / keywords.length) * 100
+        : 0.0;
+
+    setState(() {
+      matchedKeywords = matched;
+      missedKeywords = missed;
+      matchPercentage = percentage;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Keyword Matcher'),
+        backgroundColor: Colors.green,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            TextField(
+              controller: _inputController,
+              decoration: const InputDecoration(
+                labelText: 'Enter your answer or speech text',
+                border: OutlineInputBorder(),
+              ),
+              maxLines: 4,
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                matchKeywords(_inputController.text, keywords);
+              },
+              child: const Text('Check Keywords'),
+            ),
+            const SizedBox(height: 24),
+            if (matchedKeywords.isNotEmpty || missedKeywords.isNotEmpty) ...[
+              Text(
+                'Matched: ${matchedKeywords.join(', ')}',
+                style: const TextStyle(color: Colors.green),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Missed: ${missedKeywords.join(', ')}',
+                style: const TextStyle(color: Colors.red),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Match Percentage: ${matchPercentage.toStringAsFixed(2)}%',
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ]
+          ],
+        ),
+      ),
+    );
+  }
+}
