@@ -1930,7 +1930,7 @@ class _ReportsZonePageState extends State<ReportsZonePage>
                                                                 Text(
                                                                   _selectedDateRange ==
                                                                           null
-                                                                      ? 'Select Date Range'
+                                                                      ? 'Date Range'
                                                                       : '${_selectedDateRange!.start.day}/${_selectedDateRange!.start.month} - ${_selectedDateRange!.end.day}/${_selectedDateRange!.end.month}',
                                                                   style: GoogleFonts
                                                                       .poppins(

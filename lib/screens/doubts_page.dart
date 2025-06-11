@@ -79,7 +79,8 @@ class _DoubtsPageState extends State<DoubtsPage> {
           .limit(1)
           .get();
       if (studentQuery.docs.isNotEmpty) {
-        var studentData = studentQuery.docs.first.data() as Map<String, dynamic>;
+        var studentData =
+            studentQuery.docs.first.data() as Map<String, dynamic>;
         String studentName = studentData['name'] ?? 'Student';
         setState(() {
           _currentRollNumber = savedRollNumber;
@@ -465,11 +466,17 @@ class _DoubtsPageState extends State<DoubtsPage> {
               showDialog(
                 context: context,
                 builder: (context) => AlertDialog(
+                  contentPadding: const EdgeInsets.all(24),
                   title: Row(
                     children: [
-                      Icon(Icons.school, color: Colors.purple.shade400),
-                      const SizedBox(width: 8),
-                      const Text('Welcome to Study Buddy!'),
+                      Icon(Icons.school, color: Colors.purple.shade400, size: 32),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          'Welcome to Study Buddy!',
+                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                      ),
                     ],
                   ),
                   content: const Column(
